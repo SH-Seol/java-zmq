@@ -21,7 +21,7 @@ public class client {
                 ZMQ.Poller poller = context.createPoller(1);
                 poller.register(subscriber, ZMQ.Poller.POLLIN);
 
-                if(poller.poll(100) > 0) {
+                if(poller.poll(100) > 0&& poller.pollin(0)) {
                     String message = subscriber.recvStr();
                     System.out.println("I: received message " + message);
                 }
