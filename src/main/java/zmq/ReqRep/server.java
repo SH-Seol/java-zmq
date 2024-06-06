@@ -10,8 +10,8 @@ public class server {
             socket.bind("tcp://*:5555");
 
             while (!Thread.currentThread().isInterrupted()) {
-                byte[] message = socket.recv(0);
-                System.out.println("Received request: " + new String(message, ZMQ.CHARSET));
+                String message = socket.recvStr(0);
+                System.out.println("Received request: " + message);
 
                 try{
                     Thread.sleep(1000);
